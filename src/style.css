@@ -1,0 +1,19 @@
+.carousel-container {
+  height: 300px;
+  width: 300px;
+}
+
+.carousel-container,
+.carousel-slides {
+  display: flex;
+}
+
+.carousel-slides img {
+  display: none;
+  object-fit: cover;
+  width: 300px;
+}
+
+.carousel-slides .visible {
+  display: block;
+}
