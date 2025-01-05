@@ -1,6 +1,8 @@
 class Carousel {
   constructor() {
     this.slides = document.querySelectorAll('.slide');
+    this.activeDot = document.querySelector('.active');
+    this.dots = document.querySelectorAll('.carousel-dot');
     this.currentSlideIndex = 0;
     this.slideshowInterval = null;
     this.initialize();
@@ -17,7 +19,14 @@ class Carousel {
       this.prevSlide();
     });
 
-    this.displaySlide();
+    document.querySelector('#carousel-dots').addEventListener('click', (e) => {
+      if (!e.target.classList.contains('carousel-dot')) return;
+      this.currentSlideIndex = Number(e.target.dataset.dot);
+      this.stopSlideshow();
+      this.displaySlide();
+    });
+
+    this.startSlideshow();
   }
 
   nextSlide() {
@@ -40,6 +49,8 @@ class Carousel {
     if (!this.autoplayInterval) {
       this.startSlideshow();
     }
+
+    this.highlightActiveDot();
   }
 
   incrementIndex() {
@@ -58,6 +69,15 @@ class Carousel {
   stopSlideshow() {
     clearInterval(this.autoplayInterval);
     this.autoplayInterval = null;
+  }
+
+  highlightActiveDot() {
+    if (this.activeDot.classList.contains('active')) {
+      this.activeDot.classList.remove('active');
+    }
+
+    this.activeDot = this.dots[this.currentSlideIndex];
+    this.dots[this.currentSlideIndex].classList.add('active');
   }
 }
 
