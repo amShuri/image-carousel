@@ -1,6 +1,24 @@
+body {
+  background-color: #dfe3e3;
+
+  min-height: 100vh;
+  user-select: none;
+}
+
+h1 {
+  text-align: center;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .carousel-container {
-  height: 300px;
-  width: 300px;
+  height: 600px;
+  width: 600px;
+  position: relative;
 }
 
 .carousel-container,
@@ -11,9 +29,64 @@
 .carousel-slides img {
   display: none;
   object-fit: cover;
-  width: 300px;
+  width: 600px;
 }
 
 .carousel-slides .visible {
   display: block;
+}
+
+/* || CAROUSEL CONTROLS */
+.carousel-arrows .arrow {
+  position: absolute;
+  cursor: pointer;
+}
+
+.carousel-arrows .left-arrow,
+.carousel-arrows .right-arrow {
+  background: none;
+  border: none;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.carousel-arrows .left-arrow {
+  left: 7px;
+}
+
+.carousel-arrows .right-arrow {
+  right: 0;
+}
+
+.carousel-arrows svg {
+  fill: #939ca8;
+  height: 28px;
+  width: 28px;
+}
+
+.carousel-arrows svg:hover {
+  fill: #fff;
+}
+
+.carousel-dots {
+  bottom: 0;
+  left: 50%;
+  padding-bottom: 0.15em;
+  position: absolute;
+  transform: translate(-50%, 0);
+}
+
+.carousel-dot {
+  background-color: #939ca8;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  display: inline-block;
+  height: 8px;
+  width: 8px;
+}
+
+.carousel-dot.selected {
+  background-color: #4083a1;
+  height: 10px;
+  width: 10px;
 }
